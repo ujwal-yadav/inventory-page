@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { useInventoryTable } from './InventoryTable.hooks';
 import InventoryTable from './InventoryTable';
 import { renderWithTheme } from './../../testUtils';
@@ -11,7 +11,7 @@ describe('InventoryTable', () => {
   it('should display "Loading..." when isLoading is true', () => {
     useInventoryTable.mockReturnValue({ isLoading: true, inventoryData: null });
 
-    render(<InventoryTable />);
+    renderWithTheme(<InventoryTable />);
 
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
@@ -19,7 +19,7 @@ describe('InventoryTable', () => {
   it('should display "No Products available" when inventoryData is empty', () => {
     useInventoryTable.mockReturnValue({ isLoading: false, inventoryData: [] });
 
-    render(<InventoryTable />);
+    renderWithTheme(<InventoryTable />);
 
     expect(screen.getByText('No Products available')).toBeInTheDocument();
   });
@@ -69,6 +69,13 @@ describe('InventoryTable', () => {
     useInventoryTable.mockReturnValue({
       isLoading: false,
       inventoryData: mockData,
+      errors: {
+        name: false,
+        price: false,
+        brand: false,
+        category: false,
+        stock: false,
+      },
     });
 
     const { asFragment } = renderWithTheme(<InventoryTable />);

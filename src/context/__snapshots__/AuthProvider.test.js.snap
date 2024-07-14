@@ -1,11 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AuthProvider provides the auth context values 1`] = `
-<DocumentFragment>
-  UI
-</DocumentFragment>
-`;
-
 exports[`AuthProvider should render correctly 1`] = `
 <DocumentFragment>
   UI
